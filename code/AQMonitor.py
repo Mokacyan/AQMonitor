@@ -71,7 +71,7 @@ def read_pm_line (_port):
 #SHTC3 Config
 class SHTC3:
     def __init__(self):
-        self.dll = ctypes.CDLL("./Documents/Final/SHTC3.so")
+        self.dll = ctypes.CDLL("./SHTC3.so")
         init = self.dll.init
         init.restype = ctypes.c_int
         init.argtypes = [ctypes.c_void_p]
