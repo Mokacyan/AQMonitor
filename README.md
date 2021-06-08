@@ -8,7 +8,7 @@
 - requests : <code>pip install requests</code>
 
 ## Plan :
-Will be addedd mobile apps that displays Ubidots Dashboard
+Making Android apps that displays Ubidots Dashboard
 
 
 
