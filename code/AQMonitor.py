@@ -122,6 +122,8 @@ class LPS22HB:
 
 #Build Payload
 def build_payload(variable_1, variable_2, variable_3, variable_4, variable_5, variable_6, variable_7):
+    
+    # For PMS5003
     rcv = read_pm_line(port)
     res = {##"apm10" : rcv[4]*256+rcv[5],
                ##"apm25" : rcv[6]*256+rcv[7],
@@ -136,6 +138,7 @@ def build_payload(variable_1, variable_2, variable_3, variable_4, variable_5, va
                ##"gt50um" : rcv[24]*256+rcv[25],
                "gt100um" : rcv[26]*256+rcv[27]             
                }
+    #Convert pollutant concentration into AQI (EPA Version)
     myaqi ={"aqi25" : aqi.to_aqi([(aqi.POLLUTANT_PM25, res["gt25um"])], algo=aqi.ALGO_EPA),
                 "aqi100" : aqi.to_aqi([(aqi.POLLUTANT_PM10, res["gt100um"])], algo=aqi.ALGO_EPA)
             }
@@ -147,6 +150,7 @@ def build_payload(variable_1, variable_2, variable_3, variable_4, variable_5, va
     lps22hb.LPS22HB_START_ONESHOT()
     shtc3 = SHTC3()
     
+    #For obtain pressure data
     if (lps22hb._read_byte(LPS_STATUS)&0x01)==0x01:  
         u8Buf[0]=lps22hb._read_byte(LPS_PRESS_OUT_XL)
         u8Buf[1]=lps22hb._read_byte(LPS_PRESS_OUT_L)
