@@ -129,18 +129,18 @@ def build_payload(variable_1, variable_2, variable_3, variable_4, variable_5, va
                ##"apm25" : rcv[6]*256+rcv[7],
                ##"apm100" : rcv[8]*256+rcv[9],
                ##"pm10" : rcv[10]*256+rcv[11],
-              ## "pm25" : rcv[12]*256+rcv[13],
-              ## "pm100" : rcv[14]*256+rcv[15],
+              "pm25" : rcv[12]*256+rcv[13],
+              "pm100" : rcv[14]*256+rcv[15],
                ##"gt03um" : rcv[16]*256+rcv[17],
                ##"gt05um" : rcv[18]*256+rcv[19],
                ##"gt10um" : rcv[20]*256+rcv[21],
-               "gt25um" : rcv[22]*256+rcv[23],
+               ##"gt25um" : rcv[22]*256+rcv[23],
                ##"gt50um" : rcv[24]*256+rcv[25],
-               "gt100um" : rcv[26]*256+rcv[27]             
+               ##"gt100um" : rcv[26]*256+rcv[27]             
                }
     #Convert pollutant concentration into AQI (EPA Version)
-    myaqi ={"aqi25" : aqi.to_aqi([(aqi.POLLUTANT_PM25, res["gt25um"])], algo=aqi.ALGO_EPA),
-                "aqi100" : aqi.to_aqi([(aqi.POLLUTANT_PM10, res["gt100um"])], algo=aqi.ALGO_EPA)
+    myaqi ={"aqi25" : aqi.to_aqi([(aqi.POLLUTANT_PM25, res["pm25"])], algo=aqi.ALGO_EPA),
+                "aqi100" : aqi.to_aqi([(aqi.POLLUTANT_PM10, res["pm100"])], algo=aqi.ALGO_EPA)
             }
     
 
@@ -159,8 +159,8 @@ def build_payload(variable_1, variable_2, variable_3, variable_4, variable_5, va
     
         
     #Creates Value
-    value_1 = res["gt25um"]  #Concentration of PM2.5 in air
-    value_2 = res["gt100um"] #Concentration of PM10 in air
+    value_1 = res["pm25"]  #Concentration of PM2.5 in air
+    value_2 = res["pm100"] #Concentration of PM10 in air
     value_3 = myaqi["aqi25"] #AQI 2.5 Value
     value_4 = myaqi["aqi100"]#AQI 10 Value
     value_5 = shtc3.SHTC3_Read_Temperature() #Temperature
