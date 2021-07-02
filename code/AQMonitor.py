@@ -11,35 +11,17 @@ import datetime
 #Definition for Open Serial Port
 port = serial.Serial("/dev/ttyS0", baudrate = 9600, timeout = 2.0)
 
-#Definition for LPS22HB and SHTC
-LPS22HB_I2C_ADDRESS   =  0x5C
-LPS_ID                =  0xB1
+#Definition for LPS22HB Registers
 
-#Register 
-LPS_INT_CFG           =  0x0B        #Interrupt register
-LPS_THS_P_L           =  0x0C        #Pressure threshold registers 
-LPS_THS_P_H           =  0x0D        
-LPS_WHO_AM_I          =  0x0F        #Who am I        
+LPS22HB_I2C_ADDRESS   =  0x5C
+
 LPS_CTRL_REG1         =  0x10        #Control registers
 LPS_CTRL_REG2         =  0x11
 LPS_CTRL_REG3         =  0x12
-LPS_FIFO_CTRL         =  0x14        #FIFO configuration register 
-LPS_REF_P_XL          =  0x15        #Reference pressure registers
-LPS_REF_P_L           =  0x16
-LPS_REF_P_H           =  0x17
-LPS_RPDS_L            =  0x18        #Pressure offset registers
-LPS_RPDS_H            =  0x19        
-LPS_RES_CONF          =  0x1A        #Resolution register
-LPS_INT_SOURCE        =  0x25        #Interrupt register
-LPS_FIFO_STATUS       =  0x26        #FIFO status register
 LPS_STATUS            =  0x27        #Status register
 LPS_PRESS_OUT_XL      =  0x28        #Pressure output registers
 LPS_PRESS_OUT_L       =  0x29
 LPS_PRESS_OUT_H       =  0x2A
-LPS_TEMP_OUT_L        =  0x2B        #Temperature output registers
-LPS_TEMP_OUT_H        =  0x2C
-LPS_RES               =  0x33        #Filter reset register
-
 
 #Label-ID
 TOKEN = ""  # Token From Ubidots
