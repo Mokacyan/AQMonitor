@@ -4,7 +4,7 @@
 - This code is worked with Python3
 
 ## Required:
-- Enable Raspberry Pi serial port and disable serial login in <code>raspi-config</code>
+- Enable Raspberry Pi serial port and disable serial login with <code> sudo raspi-config</code>
 - python-aqi : <code>pip install python-aqi</code>
 - requests : <code>pip install requests</code>
 
