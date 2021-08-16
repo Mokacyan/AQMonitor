@@ -8,8 +8,8 @@
 - python-aqi : <code>pip install python-aqi</code>
 - requests : <code>pip install requests</code>
 
-## Plan :
-Making Android apps that displays Ubidots Dashboard
+
+<h5>Made With Love : Dwi Arif Wisesa </h5>
 
 
 
